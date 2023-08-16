@@ -12,6 +12,8 @@ import dayjs from "dayjs";
  */
 export const getSiteData = async (apikey, days, cache, status) => {
   try {
+    status.changeSiteState("loading");
+    
     const dates = [];
     const today = dayjs(new Date().setHours(0, 0, 0, 0));
 
@@ -79,6 +81,7 @@ export const getSiteData = async (apikey, days, cache, status) => {
     changeSite(processedData, status);
     return processedData;
   } catch (error) {
+    status.changeSiteState("wrong");
     console.error("获取监控数据时出错：" + error);
   }
 };
@@ -155,7 +158,7 @@ const dataProcessing = (data, dates) => {
 
     if (monitor.status === 2) result.status = "ok";
     if (monitor.status === 9) result.status = "down";
-    // result.status = "down";
+
     return result;
   });
 };
@@ -167,8 +170,11 @@ const dataProcessing = (data, dates) => {
  */
 const changeSite = (data, status) => {
   try {
+    // 统计数据
     const isAllStatusOk = data.every((item) => item.status === "ok");
     const isAnyStatusOk = data.some((item) => item.status === "ok");
+    const okCount = data.filter((item) => item.status === "ok").length;
+    const downCount = data.filter((item) => item.status === "down").length;
 
     // 更改图标
     const faviconLink = document.querySelector('link[rel="shortcut icon"]');
@@ -184,6 +190,13 @@ const changeSite = (data, status) => {
     } else {
       status.changeSiteState("allError");
     }
+
+    // 更新状态总览
+    status.changeSiteOverview({
+      count: data.length,
+      okCount,
+      downCount,
+    });
   } catch (error) {
     console.error("更改站点状态时发生错误：", error);
     // 处理错误状态

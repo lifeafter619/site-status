@@ -12,24 +12,26 @@ const App = observer(() => {
   const [siteData, setSiteData] = useState(null);
 
   // 加载配置
-  const siteName = import.meta.env.VITE_SITE_NAME;
   const apiKey = import.meta.env.VITE_API_KEY;
   const countDays = import.meta.env.VITE_COUNT_DAYS;
 
-  useEffect(() => {
-    // 更改站点标题
-    document.title = siteName;
-    // 获取站点数据
+  // 获取站点数据
+  const getSiteStatusData = () => {
+    setSiteData(null);
     getSiteData(apiKey, countDays, cache, status).then((res) => {
       console.log(res);
       setSiteData(res);
     });
+  };
+
+  useEffect(() => {
+    getSiteStatusData();
   }, [apiKey, countDays]);
 
   return (
     <>
       <GlobalScrollbar />
-      <Header />
+      <Header getSiteData={getSiteStatusData} />
       <main id="main">
         <div className="container">
           <div className="all-site">
