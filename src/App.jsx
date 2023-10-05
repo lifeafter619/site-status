@@ -15,7 +15,7 @@ const App = observer(() => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const countDays = import.meta.env.VITE_COUNT_DAYS;
 
-  // 获取站点数据
+  // 获取QQ数据
   const getSiteStatusData = () => {
     setSiteData(null);
     getSiteData(apiKey, countDays, cache, status).then((res) => {

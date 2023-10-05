@@ -22,7 +22,7 @@ const SiteCharts = ({ siteDetails }) => {
     offsetY: 0,
     meta: {
       value: {
-        alias: "当日可用率",
+        alias: "当日在线率",
         formatter: (v) => `${v}%`,
       },
     },
@@ -38,20 +38,20 @@ const SiteCharts = ({ siteDetails }) => {
         {siteDetails.status !== "ok" ? (
           siteDetails.average >= 70 ? (
             <Alert
-              message="当前站点出现异常，请检查站点状态"
+              message="当前QQ离线，请检查QQ状态"
               type="warning"
               showIcon
             />
           ) : (
             <Alert
-              message="当前站点持续异常，请立即检查站点状态或从监控项目中删除"
+              message="当前QQ离线，请立即检查QQ状态或从监控项目中删除"
               type="error"
               showIcon
             />
           )
         ) : (
           <Alert
-            message="当前站点状态正常，请继续保持哦"
+            message="当前QQ状态：在线"
             type="success"
             showIcon
           />
@@ -63,7 +63,7 @@ const SiteCharts = ({ siteDetails }) => {
             items={[
               {
                 key: "all-data",
-                label: "站点详情初始数据",
+                label: "QQ在线状态初始数据",
                 children: <p>{JSON.stringify(siteDetails)}</p>,
               },
             ]}

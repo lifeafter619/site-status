@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { makePersistable, isHydrated } from "mobx-persist-store";
 
 class Cache {
-  // 站点数据
+  // QQ数据
   siteData = null;
 
   constructor() {

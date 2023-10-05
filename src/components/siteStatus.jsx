@@ -49,7 +49,7 @@ const SiteStatus = ({ siteData, days, status }) => {
                     >
                       <div className="icon" />
                       <span className="tip">
-                        {site.status === "ok" ? "正常访问" : "无法访问"}
+                        {site.status === "ok" ? "在线" : "离线"}
                       </span>
                     </div>
                   </div>
@@ -61,17 +61,17 @@ const SiteStatus = ({ siteData, days, status }) => {
                       let tooltipText = null;
                       if (uptime >= 100) {
                         status = "normal";
-                        tooltipText = `可用率 ${formatNumber(uptime)}%`;
+                        tooltipText = `在线率 ${formatNumber(uptime)}%`;
                       } else if (uptime <= 0 && down.times === 0) {
                         status = "none";
                         tooltipText = "无数据";
                       } else {
                         status = "error";
-                        tooltipText = `故障 ${
+                        tooltipText = `离线 ${
                           down.times
                         } 次，累计 ${formatDuration(
                           down.duration
-                        )}，可用率 ${formatNumber(uptime)}%`;
+                        )}，在线率 ${formatNumber(uptime)}%`;
                       }
                       return (
                         <Tooltip
@@ -94,12 +94,12 @@ const SiteStatus = ({ siteData, days, status }) => {
                     <div className="now">今天</div>
                     <div className="note">
                       {site.total.times
-                        ? `最近 ${days} 天内故障 ${
+                        ? `最近 ${days} 天内离线 ${
                             site.total.times
                           } 次，累计 ${formatDuration(
                             site.total.duration
-                          )}，平均可用率 ${site.average}%`
-                        : `最近 ${days} 天内可用率 ${site.average}%`}
+                          )}，平均在线率 ${site.average}%`
+                        : `最近 ${days} 天内在线率 ${site.average}%`}
                     </div>
                     <div className="day">
                       {site.daily[site.daily.length - 1].date.format(
@@ -109,7 +109,7 @@ const SiteStatus = ({ siteData, days, status }) => {
                   </div>
                 </div>
               ))}
-              {/* 站点详情 */}
+              {/* QQ详情 */}
               <Modal
                 title={siteDetailsData?.name}
                 open={siteDetailsShow}

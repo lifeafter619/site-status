@@ -17,10 +17,10 @@ const Header = observer(({ getSiteData }) => {
 
   // 状态文本
   const statusNames = {
-    loading: "站点状态加载中",
-    error: "部分站点出现异常",
-    allError: "全部站点出现异常",
-    normal: "所有站点运行正常",
+    loading: "QQ在线状态加载中",
+    error: "部分QQ离线",
+    allError: "全部QQ离线",
+    normal: "所有QQ在线",
     wrong: "数据请求失败",
   };
 
@@ -101,7 +101,7 @@ const Header = observer(({ getSiteData }) => {
               {status.siteOverview ? (
                 <div className="overview">
                   <div className="count">
-                    <span className="name">站点总数</span>
+                    <span className="name">QQ总数</span>
                     <CountUp
                       className="num"
                       end={status.siteOverview.count}
@@ -110,7 +110,7 @@ const Header = observer(({ getSiteData }) => {
                   </div>
                   <div className="status-num">
                     <div className="ok-count">
-                      <span className="name">正常</span>
+                      <span className="name">在线</span>
                       <CountUp
                         className="num"
                         end={status.siteOverview.okCount}
@@ -118,7 +118,7 @@ const Header = observer(({ getSiteData }) => {
                       />
                     </div>
                     <div className="down-count">
-                      <span className="name">异常</span>
+                      <span className="name">离线</span>
                       <span className="num">
                         <CountUp
                           className="num"

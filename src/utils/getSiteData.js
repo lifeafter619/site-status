@@ -33,7 +33,7 @@ export const getSiteData = async (apikey, days, cache, status) => {
     // 缓存的有效期（秒）
     const cacheDuration = 60;
 
-    // 检查是否有可用缓存数据
+    // 检查是否有在线缓存数据
     if (cache.siteData !== null) {
       const { data, timestamp } = cache.siteData;
       // 当前时间
@@ -77,7 +77,7 @@ export const getSiteData = async (apikey, days, cache, status) => {
 
     // 处理监控数据
     const processedData = dataProcessing(response.monitors, dates);
-    // 更新站点数据
+    // 更新QQ数据
     changeSite(processedData, status);
     return processedData;
   } catch (error) {
@@ -125,7 +125,7 @@ const dataProcessing = (data, dates) => {
     });
 
     /**
-     * 统计总故障次数和累计故障时长
+     * 统计总离线次数和累计离线时长
      * @param {Object} total - 初始总数
      * @param {Object} log - 日志数据
      * @returns {Object} - 更新后的总数
@@ -164,8 +164,8 @@ const dataProcessing = (data, dates) => {
 };
 
 /**
- * 更改站点状态
- * @param {Array} data - 站点数据
+ * 更改QQ状态
+ * @param {Array} data - QQ数据
  * @param {Object} status - mobx-status
  */
 const changeSite = (data, status) => {
@@ -198,7 +198,7 @@ const changeSite = (data, status) => {
       downCount,
     });
   } catch (error) {
-    console.error("更改站点状态时发生错误：", error);
+    console.error("更改QQ状态时发生错误：", error);
     // 处理错误状态
     status.changeSiteState("error");
   }
