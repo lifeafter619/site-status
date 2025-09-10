@@ -32,7 +32,7 @@
       </n-p>
       <n-p depth="3">
         Copyright &copy; 2020 - {{ new Date().getFullYear() }}
-        <n-text depth="3" @click="jumpLink(linkData.home)"> IMSYY </n-text>
+        <n-text depth="3" @click="jumpLink(linkData.home)"> 619 </n-text>
         <n-text
           v-if="siteIcp"
           depth="3"
@@ -51,8 +51,8 @@ const { siteIcp, version } = configPublic;
 
 const linkData = {
   github: "https://github.com/imsyy/site-status",
-  home: "https://www.imsyy.top",
-  email: "mailto:one@imsyy.top",
+  home: "https://66619.eu.org",
+  email: "mailto:mail@66619.eu.org",
 };
 </script>
 
