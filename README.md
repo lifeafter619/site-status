@@ -13,7 +13,7 @@ English | [简体中文](./README.zh-CN.md)
 <img src="https://s1.ax1x.com/2023/07/20/pCHnLLt.png" alt="demo"/>
 </div>
 
-## 👀 Demo
+## 👀 Demo.
 
 > Demo password: `123456`
 
