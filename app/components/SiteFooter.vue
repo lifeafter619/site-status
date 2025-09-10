@@ -32,7 +32,7 @@
       </n-p>
       <n-p depth="3">
         Copyright &copy; 2020 - {{ new Date().getFullYear() }}
-        <n-text depth="3" @click="jumpLink(linkData.home)"> 619 </n-text>
+        <n-text depth="3" @click="jumpLink(linkData.home)"> 𝟞𝟙𝟡'𝕤 𝔹𝕃𝕆𝔾 </n-text>
         <n-text
           v-if="siteIcp"
           depth="3"
