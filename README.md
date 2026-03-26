@@ -1,7 +1,7 @@
 English | [简体中文](./README.zh-CN.md)
 
 <div align="center">
-<h1>site-status</h1>
+<h1>site-status！</h1>
 <p>An online status panel based on UptimeRobot API</p>
 <br />
 <img src="https://img.shields.io/github/last-commit/imsyy/site-status" alt="last commit"/>
